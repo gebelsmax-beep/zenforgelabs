@@ -3,102 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenForge Digital Labs | Официальный сайт</title>
+    <title>ZenForge Digital Labs</title>
     <style>
-        :root {
-            --bg-color: #0b0f17;
-            --card-bg: #121824;
-            --border-color: #22314d;
-            --text-main: #f0f4f8;
-            --text-muted: #8ba2bc;
-            --accent-blue: #38bdf8;
-            --accent-green: #4ade80;
-            --accent-pink: #f43f5e;
-        }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #090d16;
+            margin: 0;
             padding: 0;
-            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 800px; width: 100%; margin: 0 auto; padding: 40px 20px; box-sizing: border-box; }
-        header { text-align: center; margin-bottom: 60px; }
-        header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; background: linear-gradient(45deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        header p { color: var(--text-muted); font-size: 1.2rem; max-width: 500px; margin: 0 auto; }
-        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; border-left: 4px solid var(--accent-blue); padding-left: 15px; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 60px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; transition: transform 0.2s, border-color 0.2s; position: relative; }
-        .card:hover { transform: translateY(-2px); border-color: #3b82f6; }
-        .card h3 { margin: 0 0 10px 0; font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
-        .card p { color: var(--text-muted); margin: 0 0 20px 0; font-size: 1rem; }
-        .badge { font-size: 0.75rem; font-weight: 600; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .badge-live { background: rgba(74, 222, 128, 0.1); color: var(--accent-green); border: 1px solid rgba(74, 222, 128, 0.2); }
-        .badge-update { background: rgba(56, 189, 248, 0.1); color: var(--accent-blue); border: 1px solid rgba(56, 189, 248, 0.2); }
-        .badge-dev { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
-        .btn { display: inline-flex; align-items: center; background: #2563eb; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
-        .btn:hover { background: #1d4ed8; }
-        .policy-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; height: 300px; overflow-y: scroll; font-size: 0.9rem; color: var(--text-muted); }
-        .policy-box h2, .policy-box h3 { color: var(--text-main); margin-top: 20px; }
-        .policy-box h2:first-child { margin-top: 0; }
-        footer { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
+
+        /* Шапка студии с кнопкой вызова шторки (меню) */
+        .site-header {
+            padding: 35px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Расталкивает название и три полосочки по краям */
+        }
+        .brand-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+        .brand-logo span {
+            font-weight: 400;
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            color: #38bdf8;
+        }
+        
+        /* Иконка трех полосочек (гамбургер-меню) */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            opacity: 0.85;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Угольно-черная шторка-подложка */
+        .main-card {
+            background-color: #121826;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            flex-grow: 1;
+            padding: 50px 24px;
+            color: #f8fafc;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .welcome-sub {
+            font-size: 0.95rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+        }
+
+        /* Понятный и сильный заголовок */
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 35px 0;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        .description-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            margin: 0 0 45px 0;
+            font-weight: 400;
+        }
+
+        .app-links-section {
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 35px;
+        }
+        .app-link-item {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #38bdf8;
+            text-decoration: none;
+            margin-bottom: 25px;
+            letter-spacing: -0.3px;
+        }
+        .app-link-item span {
+            color: #64748b;
+            font-weight: 400;
+            font-size: 0.95rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        footer {
+            margin-top: 70px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 35px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+        footer a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: #ffffff;
+        }
+        .copyright {
+            font-size: 0.8rem;
+            color: #334155;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ZenForge Digital Labs</h1>
-            <p>Проектирование и разработка умных мобильных утилит для повседневной жизни и продуктивности</p>
-        </header>
 
-        <div class="section-title">Наши продукты в RuStore</div>
-        <div class="grid">
-            <div class="card">
-                <span class="badge badge-live" style="float: right;">Доступно в сторе</span>
-                <h3>🩸 Дневник Сахара — Контроль Глюкозы</h3>
-                <p>Простой, точный и надежный инструмент для ежедневного мониторинга уровня сахара в крови. Помогает держать показатели под контролем и вести удобную историю записей без лишней рутины.</p>
-                <a href="#" class="btn">Открыть в RuStore</a>
-            </div>
-
-            <div class="card">
-                <span class="badge badge-live" style="float: right;">Доступно в сторе</span>
-                <h3>🌲 Звуки Природы: уют и покой</h3>
-                <p>Атмосферное приложение для медитации, глубокого сна и расслабления. Живые, качественные фоновые звуки костра, дождя и моря помогут снять стресс после тяжелой рабочей смены.</p>
-                <a href="#" class="btn">Открыть в RuStore</a>
-            </div>
-
-            <div class="card">
-                <span class="badge badge-update" style="float: right;">Скоро релиз</span>
-                <h3>📊 Финансовый Менеджер</h3>
-                <p>Удобный мобильный учет личных трат и доходов. Разрабатывается специально для самозанятых, водителей и тех, кому важна быстрая фиксация бюджета «на ходу».</p>
-            </div>
-
-            <div class="card">
-                <span class="badge badge-dev" style="float: right;">В проектировании</span>
-                <h3>🎙️ ZenForge Voice Notes (Умный оратор)</h3>
-                <p>Голосовой блокнот нового поколения. Офлайн-распознавание речи прямо на процессоре смартфона без отправки аудиофайлов на сторонние серверы.</p>
-            </div>
+    <!-- Шапка вашей ИТ-студии с гамбургер-иконкой -->
+    <div class="site-header">
+        <div class="brand-logo">
+            ZenForge
+            <span>digital labs</span>
         </div>
+        <!-- Элемент трех полосочек меню -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
-        <div id="privacy" class="section-title">Политика конфиденциальности компании</div>
-        <div class="policy-box">
-            <h2>Политика конфиденциальности ZenForge Digital Labs</h2>
-            <p>Настоящая Политика конфиденциальности описывает, как мобильные приложения, выпущенные под брендом ZenForge Digital Labs, собирают, используют и защищают информацию пользователей.</p>
+    <!-- Основная угольная карточка -->
+    <div class="main-card">
+        
+        <div class="welcome-badge">Привет! 👋</div>
+        
+        <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
+        
+        <h1>Мы создаем<br>приложения.</h1>
+
+        <p class="description-text">
+            Мы проектируем и создаем автономные, легковесные мобильные программные решения на фреймворке Flutter. Наша специализация — превращение сложных идей в надежные независимые сервисы, выдерживающие испытание временем.
+        </p>
+
+        <div class="app-links-section">
+            <!-- Ссылки на продукты. ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
+            <a href="https://rustore.ru catalog/app/com.suslov.natureapp" class="app-link-item">
+                🌲 Звуки Природы: уют и покой →
+                <span>Официальный релиз в каталоге RuStore</span>
+            </a>
+
+            <a href="https://rustore.ru catalog/app/com.suslov.sugar.diary" class="app-link-item">
+                🩸 Дневник Сахара — Контроль Глюкозы →
+                <span>Официальный релиз в каталоге RuStore</span>
+            </a>
             
-            <h3>1. Сбор и использование данных</h3>
-            <p>Наши приложения созданы с упором на локальную обработку данных. Ввод числовых значений (например, уровня глюкозы или финансовых трат) сохраняется непосредственно в локальной базе данных на устройстве пользователя и не передается третьим лицам без явного согласия.</p>
-            
-            <h3>2. Технические данные и аналитика</h3>
-            <p>Для улучшения стабильности работы приложений и оперативного исправления ошибок, в программное обеспечение могут быть интегрированы официальные инструменты мониторинга магазина RuStore (MyTracker и Tracer). Эти инструменты могут собирать обезличенные данные: модель устройства, версию операционной системы и логи критических сбоев приложения.</p>
-            
-            <h3>3. Доступы и разрешения</h3>
-            <p>Приложения запрашивают доступ к функциям устройства (например, аудиосистеме или микрофону) исключительно в технический момент выполнения конкретной задачи (воспроизведение звуков природы или запись голосовой заметки). Локальные данные могут быть удалены пользователем в любой момент путем удаления приложения с устройства.</p>
+            <a href="#" class="app-link-item" style="color: #475569; pointer-events: none;">
+                📊 Финансовый Менеджер
+                <span>Сборка ядра. Подготовка к публикации</span>
+            </a>
         </div>
 
         <footer>
-            © 2026 ZenForge Digital Labs. Все права защищены. Разработано на Flutter.
+            <div class="footer-grid">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="contacts.html">Контакты и поддержка</a>
+                <a href="#">О лаборатории</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Документация</a>
+                <a href="#">Пресс-кит</a>
+                <a href="#">Вакансии</a>
+                <a href="#">Статус систем</a>
+            </div>
+            <div class="copyright">
+                © 2026 ZenForge Digital Labs. Все права защищены.
+            </div>
         </footer>
     </div>
+
 </body>
 </html>
