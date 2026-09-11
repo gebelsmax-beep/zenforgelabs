@@ -16,18 +16,32 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Шапка студии с вашим логотипом-наковальней */
+        /* Шапка студии с адаптивным кадрированием большого полотна */
         .site-header {
-            padding: 30px 24px;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            overflow: hidden; /* Обрезает всё, что выходит за границы шапки */
+            height: 90px;     /* Четко фиксируем высоту шапки */
         }
         
-        /* Настройки отображения вашего WebP логотипа */
+        /* Контейнер для правильного масштабирования логотипа */
+        .logo-wrapper {
+            width: 180px;     /* Ширина видимой зоны логотипа */
+            height: 90px;     /* Высота видимой зоны */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-left: -15px; /* Сдвигаем влево, чтобы убрать пустое поле оригинала */
+        }
+
+        /* Настройка под большое оригинальное полотно */
         .brand-logo-img {
-            height: 50px;
-            width: auto;
+            height: 220px;       /* Увеличиваем высоту, чтобы наковальня стала крупной */
+            width: auto;         /* Сохраняем пропорции */
+            object-fit: cover;   /* Профессиональное умное кадрирование */
+            margin-top: -5px;   /* Центрируем наковальню по вертикали */
             display: block;
         }
         
@@ -151,10 +165,11 @@
 </head>
 <body>
 
-    <!-- Шапка вашей ИТ-студии -->
+    <!-- Обновленная шапка с блоком кадрирования -->
     <div class="site-header">
-        <!-- ТУТ ПРОБЕЛ: убрать пробел в названии расширения logo. webp -->
-        <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
+        <div class="logo-wrapper">
+            <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
+        </div>
         
         <!-- Три полосочки меню справа -->
         <div class="menu-toggle">
@@ -180,7 +195,7 @@
         <div class="app-links-section">
             <!-- Ссылки на продукты. ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
             <a href="https://rustore.ru catalog/app/com.suslov.natureapp" class="app-link-item">
-                🌲 Звуки Прироны: уют и покой →
+                🌲 Звуки Природы: уют и покой →
                 <span>Официальный релиз в каталоге RuStore</span>
             </a>
 
