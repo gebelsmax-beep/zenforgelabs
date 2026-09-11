@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #090d16;
+            /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
+            background-color: #040c1e;
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -16,36 +17,34 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Шапка студии с адаптивным кадрированием большого полотна */
+        /* Шапка студии, которая теперь сливается с картинкой */
         .site-header {
             padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            overflow: hidden; /* Обрезает всё, что выходит за границы шапки */
-            height: 90px;     /* Четко фиксируем высоту шапки */
+            overflow: hidden;
+            height: 90px;
+            background-color: #040c1e; /* Тоже в цвет логотипа */
         }
         
-        /* Контейнер для правильного масштабирования логотипа */
         .logo-wrapper {
-            width: 180px;     /* Ширина видимой зоны логотипа */
-            height: 90px;     /* Высота видимой зоны */
+            width: 180px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            margin-left: -15px; /* Сдвигаем влево, чтобы убрать пустое поле оригинала */
+            margin-left: -15px;
         }
 
-        /* Настройка под большое оригинальное полотно */
         .brand-logo-img {
-            height: 220px;       /* Увеличиваем высоту, чтобы наковальня стала крупной */
-            width: auto;         /* Сохраняем пропорции */
-            object-fit: cover;   /* Профессиональное умное кадрирование */
-            margin-top: -5px;   /* Центрируем наковальню по вертикали */
+            height: 220px;
+            width: auto;
+            object-fit: cover;
+            margin-top: -5px;
             display: block;
         }
         
-        /* Иконка трех полосочек меню справа */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -63,7 +62,7 @@
             border-radius: 2px;
         }
 
-        /* Угольно-черная шторка-подложка */
+        /* Наша угольная шторка-подложка */
         .main-card {
             background-color: #121826;
             border-top-left-radius: 40px;
@@ -165,13 +164,11 @@
 </head>
 <body>
 
-    <!-- Обновленная шапка с блоком кадрирования -->
     <div class="site-header">
         <div class="logo-wrapper">
             <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
         </div>
         
-        <!-- Три полосочки меню справа -->
         <div class="menu-toggle">
             <span></span>
             <span></span>
@@ -179,11 +176,8 @@
         </div>
     </div>
 
-    <!-- Наша угольная шторка -->
     <div class="main-card">
-        
         <div class="welcome-badge">Привет! 👋</div>
-        
         <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
         
         <h1>Мы создаем<br>приложения.</h1>
@@ -193,7 +187,7 @@
         </p>
 
         <div class="app-links-section">
-            <!-- Ссылки на продукты. ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
+            <!-- ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
             <a href="https://rustore.ru catalog/app/com.suslov.natureapp" class="app-link-item">
                 🌲 Звуки Природы: уют и покой →
                 <span>Официальный релиз в каталоге RuStore</span>
