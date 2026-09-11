@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- УТВЕРЖДЕННОЕ НАЗВАНИЕ ВКЛАДКИ -->
     <title>ZenForge Digital Labs | ИТ-лаборатория</title>
     <style>
         body {
@@ -65,7 +66,7 @@
             margin-top: 5px;
         }
         
-        /* Кнопка трех полосочек меню справа */
+        /* Кнопка меню справа */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -86,7 +87,7 @@
             border-radius: 2px;
         }
 
-        /* ИНТЕРФЕЙС БОКОВОЙ ВЫЕЗЖАЮЩЕЙ ШТОРКИ (DRAWER) */
+        /* ИНТЕРФЕЙС БОКОВОЙ ШТОРКИ */
         .side-drawer {
             position: fixed;
             top: 0;
@@ -146,7 +147,7 @@
         }
         .drawer-overlay.open { display: block; }
 
-        /* Премиальная угольная карточка-подложка */
+        /* Премиальная угольная шторка-подложка */
         .main-card {
             background-color: #121826;
             border-top-left-radius: 40px;
@@ -175,10 +176,8 @@
         .welcome-sub {
             font-size: 0.95rem;
             color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin: 0 0 20px 0;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         h1 {
@@ -190,12 +189,14 @@
             color: #ffffff;
         }
 
+        /* КРАСИВОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ */
         .description-text {
             font-size: 1.2rem;
             line-height: 1.7;
             color: #94a3b8;
             margin: 0 0 45px 0;
             font-weight: 400;
+            text-align: justify; /* Текст больше не заваливается влево */
         }
 
         .app-links-section {
@@ -260,7 +261,7 @@
             <span></span>
         </div>
     </div>
-        <!-- Боковая выезжающая шторка меню (Drawer) -->
+    <!-- Боковая выезжающая шторка меню (Drawer) -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="side-drawer" id="sideDrawer">
         <div class="close-drawer" id="closeDrawer">✕</div>
@@ -280,13 +281,13 @@
     <div class="main-card">
         
         <div class="welcome-badge">Привет! 👋</div>
+        <!-- ИСПРАВЛЕННЫЙ ТЕКСТ ПОД ВАШ РЕГИСТР БУКВ -->
         <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
         
-        <!-- Тот самый согласованный заголовок -->
         <h1>Проектируем<br>цифровые решения.</h1>
 
         <p class="description-text">
-            Создаем независимые, быстрые и полностью автономные мобильные приложения для Android. Фокус на локальной безопасности данных и безупречном дизайне без лишнего шума.
+            Создаем независимые, быстрые и полностью автономные мобильные приложений для Android. Фокус на локальной безопасности данных и безупречном дизайне без лишнего шума.
         </p>
 
         <div class="app-links-section">
@@ -314,7 +315,7 @@
         </footer>
     </div>
 
-    <!-- Скрипт мгновенного оживления шторки -->
+    <!-- Скрипт оживления шторки -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const sideDrawer = document.getElementById('sideDrawer');
@@ -336,4 +337,3 @@
     </script>
 </body>
 </html>
-
