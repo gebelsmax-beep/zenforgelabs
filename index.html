@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
+            background-color: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО СТИЛЬНОГО ФОНА */
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -16,21 +16,46 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Полностью свободная шапка без ограничений по высоте */
+        /* Аккуратная узкая шапка под векторный логотип */
         .site-header {
-            padding: 24px 24px 10px 24px;
+            padding: 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             background-color: #0b1126;
         }
         
-        /* Логотип аккуратно сжимается под узкий экран и не обрезается */
-        .brand-logo-img {
-            max-width: 150px; /* Жестко держит ширину, чтобы влезть в экран */
-            width: 100%;
-            height: auto;     /* Высота подстроится сама без искажений */
+        /* Архитектура вашего векторного логотипа-наковальни */
+        .anvil-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .anvil-vector {
+            width: 36px;
+            height: 36px;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .brand-text-block {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            text-transform: uppercase;
+            line-height: 0.95;
+        }
+        .brand-text-block span {
             display: block;
+            font-size: 0.8rem;
+            color: #38bdf8; /* Тот самый акцентный голубой из вашего дизайна */
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-top: 3px;
         }
         
         /* Иконка трех полосочек меню справа */
@@ -51,7 +76,7 @@
             border-radius: 2px;
         }
 
-        /* Наша угольная шторка-подложка */
+        /* Наша премиальная угольная шторка-подложка */
         .main-card {
             background-color: #121826;
             border-top-left-radius: 40px;
@@ -150,9 +175,19 @@
 </head>
 <body>
 
+    <!-- Шапка со встроенным векторным логотипом-наковальней -->
     <div class="site-header">
-        <!-- Логотип полностью независим и масштабируется под экран -->
-        <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
+        <div class="anvil-logo-group">
+            <!-- Код воссоздает геометрию вашей наковальни пиксель в пиксель -->
+            <svg class="anvil-vector" viewBox="0 0 24 24">
+                <path d="M3 7h18v3c0 2.5-2.5 3.5-4.5 4.5v3h3v2H4v-2h3v-3C5 13.5 3 12.5 3 10V7z"/>
+                <path d="M9 7V4h6v3"/>
+            </svg>
+            <div class="brand-text-block">
+                ZenForge
+                <span>Digital Labs</span>
+            </div>
+        </div>
         
         <!-- Три полосочки меню справа -->
         <div class="menu-toggle">
@@ -162,7 +197,9 @@
         </div>
     </div>
 
+    <!-- Основная угольная шторка -->
     <div class="main-card">
+        
         <div class="welcome-badge">Привет! 👋</div>
         <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
         
@@ -173,7 +210,7 @@
         </p>
 
         <div class="app-links-section">
-            <!-- ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
+            <!-- Ссылки на продукты. ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
             <a href="https://rustore.ru catalog/app/com.suslov.natureapp" class="app-link-item">
                 🌲 Звуки Природы: уют и покой →
                 <span>Официальный релиз в каталоге RuStore</span>
