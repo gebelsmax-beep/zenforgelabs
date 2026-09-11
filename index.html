@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenForge Digital Labs</title>
+    <title>ZenForge Digital Labs | ИТ-лаборатория</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b1126; /* ИДЕАЛЬНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
+            background-color: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         /* Узкая аккуратная шапка */
@@ -64,7 +65,7 @@
             margin-top: 5px;
         }
         
-        /* Иконка трех полосочек меню справа */
+        /* Кнопка трех полосочек меню справа */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -73,7 +74,10 @@
             height: 16px;
             cursor: pointer;
             opacity: 0.85;
+            transition: opacity 0.2s;
+            z-index: 10;
         }
+        .menu-toggle:hover { opacity: 1; }
         .menu-toggle span {
             display: block;
             width: 100%;
@@ -82,7 +86,67 @@
             border-radius: 2px;
         }
 
-        /* Премиальная угольная шторка-подложка */
+        /* ИНТЕРФЕЙС БОКОВОЙ ВЫЕЗЖАЮЩЕЙ ШТОРКИ (DRAWER) */
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 320px;
+            height: 100%;
+            background-color: rgba(9, 13, 26, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            z-index: 100;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 40px 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .side-drawer.open {
+            right: 0;
+        }
+        
+        .close-drawer {
+            align-self: flex-end;
+            font-size: 1.5rem;
+            color: #64748b;
+            cursor: pointer;
+            line-height: 1;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+        .close-drawer:hover { color: #ffffff; }
+        
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .drawer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .drawer-links a:hover { color: #38bdf8; }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 99;
+            display: none;
+        }
+        .drawer-overlay.open { display: block; }
+
+        /* Премиальная угольная карточка-подложка */
         .main-card {
             background-color: #121826;
             border-top-left-radius: 40px;
@@ -159,29 +223,17 @@
         footer {
             margin-top: 70px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 35px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-        footer a {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 0.9rem;
+            padding-top: 25px;
+            text-align: center;
         }
         .copyright {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #334155;
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка с утвержденным ИТ-логотипом и Вариантом 2 -->
     <div class="site-header">
         <div class="anvil-logo-group">
             <div class="icon-wrapper">
@@ -202,24 +254,39 @@
             </div>
         </div>
         
-        <!-- Три полосочки меню справа -->
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
+        <!-- Боковая выезжающая шторка меню (Drawer) -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="close-drawer" id="closeDrawer">✕</div>
+        <div class="drawer-links">
+            <a href="privacy.html">Политика конфиденциальности</a>
+            <a href="contacts.html">Контакты и поддержка</a>
+            <a href="#">О лаборатории</a>
+            <a href="#">Условия использования</a>
+            <a href="#">Документация</a>
+            <a href="#">Пресс-кит</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Статус систем</a>
+        </div>
+    </div>
 
-    <!-- Наша угольная шторка -->
+    <!-- Основной контент (Шторка-карточка) -->
     <div class="main-card">
         
         <div class="welcome-badge">Привет! 👋</div>
         <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
         
-        <h1>Мы создаем<br>приложения.</h1>
+        <!-- Тот самый согласованный заголовок -->
+        <h1>Проектируем<br>цифровые решения.</h1>
 
         <p class="description-text">
-            Мы проектируем и создаем автономные, легковесные mobile программные решения на фреймворке Flutter. Наша специализация — превращение сложных идей в надежные независимые сервисы, выдерживающие испытание временем.
+            Создаем независимые, быстрые и полностью автономные мобильные приложения для Android. Фокус на локальной безопасности данных и безупречном дизайне без лишнего шума.
         </p>
 
         <div class="app-links-section">
@@ -241,21 +308,32 @@
         </div>
 
         <footer>
-            <div class="footer-grid">
-                <a href="privacy.html">Политика конфиденциальности</a>
-                <a href="contacts.html">Контакты и поддержка</a>
-                <a href="#">О лаборатории</a>
-                <a href="#">Условия использования</a>
-                <a href="#">Документация</a>
-                <a href="#">Пресс-кит</a>
-                <a href="#">Вакансии</a>
-                <a href="#">Статус систем</a>
-            </div>
             <div class="copyright">
                 © 2026 ZenForge Digital Labs. Все права защищены.
             </div>
         </footer>
     </div>
 
+    <!-- Скрипт мгновенного оживления шторки -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sideDrawer = document.getElementById('sideDrawer');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        const closeDrawer = document.getElementById('closeDrawer');
+
+        menuToggle.addEventListener('click', () => {
+            sideDrawer.classList.add('open');
+            drawerOverlay.classList.add('open');
+        });
+
+        function hideMenu() {
+            sideDrawer.classList.remove('open');
+            drawerOverlay.classList.remove('open');
+        }
+
+        closeDrawer.addEventListener('click', hideMenu);
+        drawerOverlay.addEventListener('click', hideMenu);
+    </script>
 </body>
 </html>
+
