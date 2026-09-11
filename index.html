@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,46 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZenForge Digital Labs</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
-            background-color: #0b1126;
-            margin: 0;
+        :root {
+            --bg-main: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
+            --bg-card: #121826;
+            --text-main: #ffffff;
+            --text-muted: #64748b;
+            --border: rgba(255, 255, 255, 0.03);
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            margin: 0; 
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Шапка студии, которая теперь сливается с картинкой */
+        
+        /* Чистая шапка без насильственного кадрирования */
         .site-header {
-            padding: 10px 24px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px 24px 0 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            overflow: hidden;
-            height: 90px;
-            background-color: #0b1126; /* Тоже в цвет логотипа */
+            background-color: var(--bg-main);
         }
         
+        /* Контейнер подгоняет логотип под ширину экрана без искажений */
         .logo-wrapper {
-            width: 180px;
-            height: 90px;
+            max-width: 160px; /* Ограничиваем общую ширину логотипа на экране */
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            margin-left: -15px;
         }
 
+        /* Картинка теперь отображается в своем родном, идеальном качестве */
         .brand-logo-img {
-            height: 220px;
-            width: auto;
-            object-fit: cover;
-            margin-top: -5px;
+            width: 100%;
+            height: auto; /* Высота подстроится сама без искажения пикселей */
             display: block;
         }
         
+        /* Иконка трех полосочек меню справа */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -64,14 +68,15 @@
 
         /* Наша угольная шторка-подложка */
         .main-card {
-            background-color: #121826;
+            background-color: var(--bg-card);
             border-top-left-radius: 40px;
             border-top-right-radius: 40px;
             flex-grow: 1;
             padding: 50px 24px;
             color: #f8fafc;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 1px solid var(--border);
             box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
+            margin-top: 15px; /* Аккуратный отступ от логотипа до шторки */
         }
 
         .welcome-badge {
@@ -115,7 +120,7 @@
 
         .app-links-section {
             margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border);
             padding-top: 35px;
         }
         .app-link-item {
@@ -137,7 +142,7 @@
 
         footer {
             margin-top: 70px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border);
             padding-top: 35px;
         }
         .footer-grid {
@@ -150,10 +155,6 @@
             color: #64748b;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        footer a:hover {
-            color: #ffffff;
         }
         .copyright {
             font-size: 0.8rem;
@@ -164,11 +165,13 @@
 </head>
 <body>
 
+    <!-- Шапка со свободным оригинальным логотипом -->
     <div class="site-header">
         <div class="logo-wrapper">
             <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
         </div>
         
+        <!-- Три полосочки меню справа -->
         <div class="menu-toggle">
             <span></span>
             <span></span>
@@ -176,14 +179,17 @@
         </div>
     </div>
 
+    <!-- Наша угольная шторка -->
     <div class="main-card">
+        
         <div class="welcome-badge">Привет! 👋</div>
+        
         <div class="welcome-sub">Добро пожаловать в ZenForge Digital Labs</div>
         
         <h1>Мы создаем<br>приложения.</h1>
 
         <p class="description-text">
-            Мы проектируем и создаем автономные, легковесные мобильные программные решения на фреймворке Flutter. Наша специализация — превращение сложных идей в надежные независимые сервисы, выдерживающие испытание временем.
+            We проектируем и создаем автономные, легковесные мобильные программные решения на фреймворке Flutter. Наша специализация — превращение сложных идей в надежные независимые сервисы, выдерживающие испытание временем.
         </p>
 
         <div class="app-links-section">
