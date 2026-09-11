@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО СТИЛЬНОГО ФОНА */
+            background-color: #0b1126; /* ИДЕАЛЬНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -25,11 +25,25 @@
             background-color: #0b1126;
         }
         
-        /* Блок векторного логотипа */
+        /* Блок векторного ИТ-логотипа */
         .anvil-logo-group {
             display: flex;
             align-items: center;
             gap: 14px;
+        }
+        
+        /* Контейнер жестко держит размер 40х40, чтобы знак не вытягивался */
+        .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
         
         .brand-text-block {
@@ -167,24 +181,22 @@
 </head>
 <body>
 
-    <!-- Шапка со светящейся неоновой наковальней -->
+    <!-- Шапка с утвержденным ИТ-логотипом -->
     <div class="site-header">
         <div class="anvil-logo-group">
-            <!-- Код рисует точную наковальню с неоновым покраснением -->
-            <svg class="anvil-vector" viewBox="0 0 24 24" style="width: 44px; height: 44px; fill: none; stroke-linecap: round; stroke-linejoin: round;">
-                <defs>
-                    <!-- Настройка неонового покраснения (свечения) -->
-                    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="3" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                </defs>
-                <!-- Само неоновое свечение под наковальней -->
-                <path d="M7 14c2 3 8 3 10 0" stroke="#38bdf8" stroke-width="4" filter="url(#neon-glow)" opacity="0.6"/>
-                <!-- Четкий белый контур кузнечной наковальни с рогом -->
-                <path d="M3 9h12c2.5 0 4.5-1.5 5.5-3.5V9c0 2-1.5 3-3.5 3.5v4h2v2H5v-2h2v-4c-2-.5-4-1.5-4-3.5V5.5C4 7.5 4.5 9 3 9z" stroke="#ffffff" stroke-width="2"/>
-                <path d="M8 5.5V9h8V5.5" stroke="#ffffff" stroke-width="1.5"/>
-            </svg>
+            <div class="icon-wrapper">
+                <!-- Вариант 1: Код скобок кода со светящейся искрой -->
+                <svg viewBox="0 0 24 24" fill="none">
+                    <defs>
+                        <filter id="glow-t1" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="1.5" result="b"/>
+                            <feComposite in="SourceGraphic" in2="b" operator="over"/>
+                        </filter>
+                    </defs>
+                    <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="2" fill="#38bdf8" filter="url(#glow-t1)"/>
+                </svg>
+            </div>
             <div class="brand-text-block">
                 ZenForge
                 <span>Digital Labs</span>
