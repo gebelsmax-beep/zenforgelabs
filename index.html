@@ -16,34 +16,24 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Шапка студии, которая теперь сливается с картинкой */
+        /* Полностью свободная шапка без ограничений по высоте */
         .site-header {
-            padding: 10px 24px;
+            padding: 24px 24px 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            overflow: hidden;
-            height: 90px;
             background-color: #0b1126;
         }
         
-        .logo-wrapper {
-            width: 180px;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        /* Настройка под большое оригинальное полотно вашего логотипа, чтобы он был крупным */
+        /* Логотип аккуратно сжимается под узкий экран и не обрезается */
         .brand-logo-img {
-            height: 220px;
-            width: auto;
-            object-fit: cover;
-            margin-top: -5px;
+            max-width: 150px; /* Жестко держит ширину, чтобы влезть в экран */
+            width: 100%;
+            height: auto;     /* Высота подстроится сама без искажений */
             display: block;
         }
         
+        /* Иконка трех полосочек меню справа */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -71,6 +61,7 @@
             color: #f8fafc;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
+            margin-top: 10px;
         }
 
         .welcome-badge {
@@ -160,10 +151,10 @@
 <body>
 
     <div class="site-header">
-        <div class="logo-wrapper">
-            <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
-        </div>
+        <!-- Логотип полностью независим и масштабируется под экран -->
+        <img src="logo.webp" alt="ZenForge Digital Labs" class="brand-logo-img">
         
+        <!-- Три полосочки меню справа -->
         <div class="menu-toggle">
             <span></span>
             <span></span>
