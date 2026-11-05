@@ -28,7 +28,6 @@
             box-sizing: border-box;
         }
 
-        /* Главный контейнер: теперь он адаптивный и расширяется на ПК */
         .site-container {
             max-width: 900px;
             width: 100%;
@@ -40,50 +39,46 @@
             box-sizing: border-box;
         }
 
-        /* Шапка всегда по центру */
         .site-header {
             text-align: center;
             margin-bottom: 32px;
         }
 
-        /* 🌸 ТВОЙ РОДНОЙ ФИРМЕННЫЙ ЛОГОТИП ZENFORGE С АНИМАЦИЕЙ ВРАЩЕНИЯ */
-        .zenforge-logo {
-            width: 76px;
-            height: 76px;
-            margin: 0 auto 16px;
+        .zenforge-logo-web {
+            width: 90px;
+            height: 50px;
+            margin: 0 auto 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 34px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(2, 132, 199, 0.05) 70%);
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-            animation: logoRotate 12s infinite linear;
-        }
-
-        @keyframes logoRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
-            margin: 0 0 6px 0;
+            margin: 0 0 4px 0;
             letter-spacing: -0.5px;
         }
 
         .subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 600;
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+            line-height: 1.6;
         }
 
         .section-title {
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             color: var(--accent-color);
             text-align: center;
@@ -92,7 +87,6 @@
             text-transform: uppercase;
         }
 
-        /* ✨ СЕТКА: 1 колонка на мобилках, 2 колонки на ПК */
         .apps-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -219,10 +213,26 @@
         .icon-btn:active { transform: scale(0.9); }
         .icon-btn.success { color: #10b981; }
         
+        .footer-nav {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-color);
+        }
+
         .footer-text {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 32px;
+            margin-top: 12px;
             text-align: center;
             opacity: 0.4;
         }
@@ -232,13 +242,24 @@
 
 <div class="site-container">
     <div class="site-header">
-        <!-- 🌸 Возвращен твой оригинальный статический логотип-кругляшок -->
-        <div class="zenforge-logo">🔮</div>
-        <h1>ZenForge Digital Labs</h1>
-        <div class="subtitle">Студия разработки</div>
+        <div class="zenforge-logo-web">
+            <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%" xmlns="http://w3.org">
+                <defs>
+                    <filter id="glow-site" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="1.5" result="b"/>
+                        <feComposite in="SourceGraphic" in2="b" operator="over"/>
+                    </filter>
+                </defs>
+                <path d="M8 5l-7 7 7 7M16 5l7 7-7 7" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="2.2" fill="#38bdf8" filter="url(#glow-site)"/>
+            </svg>
+        </div>
+        <h1>ZenForge</h1>
+        <div class="subtitle">Digital Labs</div>
+        <p class="welcome-text">Проектируем и создаем инновационные цифровые решения. Локальные прикладные утилиты, инструменты автоматизации и софт для вашего удобства.</p>
     </div>
 
-    <div class="section-title">Наши продукты:</div>
+    <div class="section-title">Разработанные продукты:</div>
 
     <div class="apps-grid">
         <!-- Карточка 1: Дневник Сахара -->
@@ -250,8 +271,8 @@
                 </div>
                 <div class="app-desc">Технологичный трекер самоконтроля уровня глюкозы, фиксации замеров до/после еды, умных напоминаний и экспорта медицинских PDF-отчётов.</div>
             </div>
-            <!-- ✨ Прямая ссылка для открытия сразу внутри приложения RuStore -->
-            <a href="ru.rustore.app://art/apps/com.suslov.sugar.diary" class="store-btn">Открыть в приложении</a>
+            <!-- Один пробел после .ru -->
+            <a href="https://rustore.ru/catalog/app/com.suslov.sugar.diary" class="store-btn" target="_blank">Открыть в RuStore</a>
         </div>
 
         <!-- Карточка 2: Звуки Природы -->
@@ -263,8 +284,8 @@
                 </div>
                 <div class="app-desc">Атмосферный аудио-плеер для глубокого сна и релаксации с умным фоновым кэшированием и гибридным стримингом живых PRO-атмосфер.</div>
             </div>
-            <!-- ✨ Открывает сразу внутри приложения RuStore -->
-            <a href="ru.rustore.app://art/apps/com.suslov.natureapp" class="store-btn">Открыть в приложении</a>
+            <!-- Один пробел после .ru -->
+            <a href="https://rustore.ru/catalog/app/com.suslov.natureapp" class="store-btn" target="_blank">Открыть в RuStore</a>
         </div>
         <!-- Карточка 3: Фонарик PRO -->
         <div class="app-card">
@@ -275,8 +296,8 @@
                 </div>
                 <div class="app-desc">Удобный, мощный и быстрый инструмент со встроенными режимами яркого стробоскопа, SOS-сигналов и полной оптимизацией энергопотребления устройства.</div>
             </div>
-            <!-- Ссылка-интент на приложение. Вручную поправь имя пакета на нужное, если захочешь -->
-            <a href="ru.rustore.app://art/apps/ru.zenforgelabs.flashlight_app" class="store-btn">Открыть в приложении</a>
+            <!-- Один пробел после .ru. Поправь название пакета вручную на своё оригинальное прямо на гитхабе -->
+            <a href="https://rustore.ru/catalog/app/ru.zenforgelabs.flashlight_app" class="store-btn" target="_blank">Открыть в RuStore</a>
         </div>
 
         <!-- Карточка 4: Учёт доходов и расходов -->
@@ -305,6 +326,10 @@
                 </svg>
             </button>
         </div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
     </div>
 
     <div class="footer-text">© 2026 ZenForge Digital Labs. Все права защищены.</div>
