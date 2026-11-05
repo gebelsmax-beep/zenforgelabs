@@ -20,29 +20,16 @@
             color: var(--text-main);
             line-height: 1.5;
             margin: 0;
-            padding: 16px 12px 30px 12px; /* ✨ Минимальный отступ от верхнего края экрана */
+            padding: 16px 12px 30px 12px;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* ✨ Прижали монолит к самому верху */
+            align-items: flex-start;
             min-height: 100vh;
             box-sizing: border-box;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* ЕДИНЫЙ КЛАСС-МОНОЛИТ (НИКАКИХ БЛОКОВ В БЛОКЕ) */
-        .site-container { 
-            position: relative; /* Железный якорь для кнопки меню */
-            max-width: 900px; 
-            width: 100%; 
-            background: var(--card-bg); 
-            padding: 55px 20px 30px 20px; /* Отступы с запасом под бургер */
-            border-radius: 24px; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
-            border: 1px solid var(--border-color); 
-            box-sizing: border-box; 
-        }
-
-        /* КНОПКА МЕНЮ: СИДИТ ИДЕАЛЬНО В УГЛУ ЕДИНОГО БЛОКА С ЗАПАСОМ */
         .burger-menu-btn {
             position: absolute;
             top: 16px;
@@ -95,6 +82,18 @@
         .drawer-divider { height: 1px; background: var(--border-color); margin: 16px 0; }
         .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 23, 0.7); z-index: 150; display: none; }
         .drawer-overlay.show { display: block; }
+
+        .site-container { 
+            position: relative;
+            max-width: 900px; 
+            width: 100%; 
+            background: var(--card-bg); 
+            padding: 55px 20px 30px 20px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
+            border: 1px solid var(--border-color); 
+            box-sizing: border-box; 
+        }
         
         .site-header { margin-bottom: 28px; text-align: center; }
         .brand-monolith { display: inline-flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 12px; text-align: left; }
@@ -103,7 +102,6 @@
         .brand-title { color: #ffffff; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 0.95; margin: 0; }
         .brand-subtitle { color: #38bdf8; font-size: 14.5px; font-weight: 700; letter-spacing: 0.5px; margin: 4px 0 0 0; }
         
-        /* ✨ ПРИВЕТСТВИЕ: ВЫРОВНЕНО ПО ШИРИНЕ С АВТОПЕРЕНОСАМИ */
         .welcome-text { 
             font-size: 13.5px; 
             color: var(--text-muted); 
@@ -120,7 +118,6 @@
         .apps-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
         @media (min-width: 680px) { .apps-grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
         
-        /* ✨ ОПИСАНИЯ УТИЛИТ: ВЫРОВНЕНЫ ПО ШИРИНЕ С АВТОПЕРЕНОСАМИ */
         .app-card { background: rgba(2, 6, 23, 0.4); border: 1px solid var(--border-color); border-radius: 16px; padding: 18px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s ease, transform 0.2s ease; }
         .app-card:hover { border-color: var(--accent-color); transform: translateY(-2px); }
         .app-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
@@ -138,18 +135,22 @@
             -ms-hyphens: auto;
             hyphens: auto;
         }
-
-
-<div class="site-container">
-    <!-- ✨ КНОПКА ПЕРЕНЕСЕНА СЮДА! Теперь она внутри карточки и привязана намертво -->
-    <button class="burger-menu-btn" onclick="toggleDrawer()">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-    </button>
-
+        
+        .store-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 9px 16px; font-size: 12.5px; font-weight: 700; border-radius: 10px; text-decoration: none; box-sizing: border-box; transition: all 0.2s ease; }
+        .store-btn:hover { background: var(--accent-color); color: var(--bg-color); }
+        .store-btn.disabled { color: var(--text-muted); border-color: var(--border-color); cursor: default; opacity: 0.5; }
+        .store-btn.disabled:hover { background: transparent; color: var(--text-muted); }
+        
+        .email-wrapper { margin-top: 32px; display: flex; justify-content: center; }
+        .email-container { display: inline-flex; align-items: center; gap: 10px; background: rgba(2, 6, 23, 0.5); padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-color); }
+        .email-address { font-size: 13.5px; font-weight: 700; color: var(--accent-color); }
+        .icon-btn { background: none; border: none; padding: 2px; cursor: pointer; display: flex; align-items: center; color: var(--accent-color); transition: transform 0.1s ease, color 0.2s ease; }
+        .icon-btn:active { transform: scale(0.9); }
+        .icon-btn.success { color: #10b981; }
+        .footer-text { font-size: 11px; color: var(--text-muted); margin-top: 32px; text-align: center; opacity: 0.4; }
+    </style>
+</head>
+<body>
 
     <div class="drawer-overlay" id="siteOverlay" onclick="toggleDrawer()"></div>
 
@@ -170,6 +171,14 @@
     </div>
 
 <div class="site-container">
+    <button class="burger-menu-btn" onclick="toggleDrawer()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
     <div class="site-header">
         <div class="brand-monolith">
             <div class="logo-svg-wrapper">
@@ -195,6 +204,7 @@
     <div class="section-title">Разработанные продукты:</div>
 
     <div class="apps-grid">
+        <!-- Карточка 1: Дневник Сахара -->
         <div class="app-card">
             <div>
                 <div class="app-header">
@@ -203,9 +213,10 @@
                 </div>
                 <div class="app-desc">Технологичный трекер самоконтроля уровня глюкозы, фиксации замеров до/после еды, умных напоминаний и экспорта медицинских PDF-отчётов.</div>
             </div>
-            <a href="https://rustore.ru/catalog/app/com.suslov.sugar.diary" class="store-btn">Открыть в RuStore</a>
+            <a href="https://www.rustore.ru/catalog/app/com.suslov.sugar.diary" class="store-btn">Открыть в RuStore</a>
         </div>
 
+        <!-- Карточка 2: Звуки Природы -->
         <div class="app-card">
             <div>
                 <div class="app-header">
@@ -214,8 +225,9 @@
                 </div>
                 <div class="app-desc">Атмосферный аудио-плеер для глубокого сна и релаксации с умным фоновым кэшированием и гибридным стримингом живых PRO-атмосфер.</div>
             </div>
-            <a href="https://rustore.ru/catalog/app/com.suslov.natureapp" class="store-btn">Открыть в RuStore</a>
+            <a href="https://www.rustore.ru/catalog/app/com.suslov.natureapp" class="store-btn">Открыть в RuStore</a>
         </div>
+        <!-- Карточка 3: Фонарик PRO -->
         <div class="app-card">
             <div>
                 <div class="app-header">
@@ -224,9 +236,11 @@
                 </div>
                 <div class="app-desc">Удобный, мощный и быстрый инструмент со встроенными режимами яркого стробоскопа, SOS-сигналов и полной оптимизацией энергопотребления устройства.</div>
             </div>
-            <a href="https://rustore.ru/catalog/app/ru.zenforgelabs.flashlight_app" class="store-btn">Открыть в RuStore</a>
+            <!-- Вручную поправь имя пакета на своё оригинальное, если потребуется -->
+            <a href="https://www.rustore.ru/catalog/app/ru.zenforgelabs.flashlight_app" class="store-btn">Открыть в RuStore</a>
         </div>
 
+        <!-- Карточка 4: Учёт доходов и расходов -->
         <div class="app-card">
             <div>
                 <div class="app-header">
