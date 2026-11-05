@@ -3,336 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenForge Digital Labs | ИТ-лаборатория</title>
+    <title>ZenForge Digital Labs — Студия мобильной разработки</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b1126; /* ТОЧНЫЙ ЦВЕТ ВАШЕГО ЛОГОТИПА */
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+        :root {
+            --bg-color: #020617;
+            --card-bg: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --border-color: #1e293b;
         }
 
-        /* Узкая аккуратная шапка */
-        .site-header {
-            padding: 24px 20px;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px 12px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            background-color: #0b1126;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
-        
-        /* Блок векторного ИТ-логотипа */
-        .anvil-logo-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+
+        .site-container {
+            max-width: 500px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 26px 20px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-sizing: border-box;
         }
-        
-        .icon-wrapper {
-            width: 36px;
-            height: 36px;
+
+        .logo-pulse {
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle, var(--accent-color) 0%, rgba(2,132,199,0.2) 70%);
+            border-radius: 50%;
+            margin: 0 auto 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            animation: pulse 3s infinite ease-in-out;
         }
-        .icon-wrapper svg {
-            width: 100%;
-            height: 100%;
-            display: block;
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); }
         }
-        
-        .brand-text-block {
-            font-size: 1.25rem;
+
+        h1 {
+            font-size: 21px;
             font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.3px;
-            line-height: 0.95;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.5px;
         }
-        .brand-text-block span {
-            display: block;
-            font-size: 0.75rem; 
-            color: #38bdf8; 
+
+        .subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title {
+            font-size: 13.5px;
             font-weight: 700;
-            letter-spacing: 0.3px;
-            margin-top: 4px;
+            color: var(--accent-color);
+            text-align: left;
+            margin: 20px 0 10px 0;
+            letter-spacing: 0.5px;
         }
-        
-        /* Кнопка меню справа */
-        .menu-toggle {
+
+        .app-card {
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+            text-align: left;
+            transition: border-color 0.2s ease;
+        }
+
+        .app-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .app-header {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 22px;
-            height: 14px;
-            cursor: pointer;
-            opacity: 0.85;
-            z-index: 10;
-        }
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #ffffff;
-            border-radius: 2px;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
         }
 
-        /* ИНТЕРФЕЙС БОКОВОЙ ШТОРКИ */
-        .side-drawer {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 70%;
-            max-width: 300px;
-            height: 100%;
-            background-color: rgba(9, 13, 26, 0.96);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-            z-index: 100;
-            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 40px 24px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
-        .side-drawer.open {
-            right: 0;
-        }
-        
-        .close-drawer {
-            align-self: flex-end;
-            font-size: 1.4rem;
-            color: #64748b;
-            cursor: pointer;
-            line-height: 1;
-            margin-bottom: 40px;
-        }
-        
-        .drawer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-        }
-        .drawer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-        .drawer-links a:hover { color: #38bdf8; }
-
-        .drawer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 99;
-            display: none;
-        }
-        .drawer-overlay.open { display: block; }
-
-        /* Дорогая шторка-подложка */
-        .main-card {
-            background-color: #121826;
-            border-top-left-radius: 36px;
-            border-top-right-radius: 36px;
-            flex-grow: 1;
-            padding: 45px 24px;
-            color: #f8fafc;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 -15px 35px rgba(0,0,0,0.4);
+        .app-icon {
+            font-size: 20px;
         }
 
-        .welcome-badge {
+        .app-name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .app-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .store-btn {
             display: inline-flex;
             align-items: center;
-            background: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .welcome-sub {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin: 0 0 16px 0;
-            font-weight: 500;
-            letter-spacing: -0.1px;
-        }
-
-        /* УМЕНЬШЕННЫЙ ДОРОГОЙ ЗАГОЛОВОК */
-        h1 {
-            font-size: 2.0rem; /* Сделали аккуратным и собранным */
-            font-weight: 800;
-            line-height: 1.2;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.8px;
-            color: #ffffff;
-        }
-
-        /* ЧИСТЫЙ ТЕКСТ БЕЗ ДЫР И ВЫРАВНИВАНИЯ ПО ШИРИНЕ */
-        .description-text {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #94a3b8;
-            margin: 0 0 40px 0;
-            font-weight: 400;
-            text-align: left; /* Чистый левый край без разрывов */
-        }
-
-        .app-links-section {
-            margin-top: 35px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 30px;
-        }
-        .app-link-item {
-            display: block;
-            font-size: 1.15rem;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 7px 12px;
+            font-size: 11.5px;
             font-weight: 700;
-            color: #38bdf8;
+            border-radius: 8px;
             text-decoration: none;
-            margin-bottom: 24px;
-            letter-spacing: -0.2px;
-        }
-        .app-link-item span {
-            color: #64748b;
-            font-weight: 400;
-            font-size: 0.9rem;
-            display: block;
-            margin-top: 4px;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
         }
 
-        footer {
-            margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 24px;
-            text-align: center;
+        .store-btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
         }
-        .copyright {
-            font-size: 0.8rem;
-            color: #334155;
+
+        .store-btn.disabled {
+            color: var(--text-muted);
+            border-color: var(--border-color);
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .store-btn.disabled:hover {
+            background: transparent;
+            color: var(--text-muted);
+        }
+
+        .email-wrapper {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .email-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .email-address {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            padding: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: var(--accent-color);
+            transition: transform 0.1s ease, color 0.2s ease;
+        }
+
+        .icon-btn:active { transform: scale(0.9); }
+        .icon-btn.success { color: #10b981; }
+        
+        .footer-text {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            opacity: 0.4;
         }
     </style>
 </head>
 <body>
 
-        <!-- Вся шапка сайта с рабочей ссылкой на главную -->
-    <div class="site-header">
-        <!-- ТУТ ЛИШНИЙ ПРОБЕЛ: убрать пробел в index .html -->
-        <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 14px;">
-            <div class="anvil-logo-group" style="gap: 14px;">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <defs>
-                            <filter id="glow-t1" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="1.5" result="b"/>
-                                <feComposite in="SourceGraphic" in2="b" operator="over"/>
-                            </filter>
-                        </defs>
-                        <path d="M8 6l-6 6 6 6M16 6l6 6-6 6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="12" r="2" fill="#38bdf8" filter="url(#glow-t1)"/>
-                    </svg>
-                </div>
-                <div class="brand-text-block">
-                    ZenForge
-                    <span>Digital Labs</span>
-                </div>
-            </div>
-        </a>
-        
-        <!-- Три полосочки меню справа -->
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+<div class="site-container">
+    <div class="logo-pulse">⚡</div>
+    <h1>ZenForge Digital Labs</h1>
+    <div class="subtitle">Студия разработки</div>
+
+    <div class="section-title">Наши продукты в RuStore:</div>
+
+    <!-- Карточка 1: Дневник Сахара -->
+    <div class="app-card">
+        <div class="app-header">
+            <span class="app-icon">🩸</span>
+            <span class="app-name">Дневник сахара</span>
+        </div>
+        <div class="app-desc">Технологичный трекер самоконтроля уровня глюкозы, фиксации замеров до/после еды, умных напоминаний и экспорта медицинских PDF-отчётов.</div>
+        <!-- Ровно один пробел после .ru -->
+        <a href="https://rustore.ru/catalog/app/com.suslov.sugar.diary" class="store-btn" target="_blank">Открыть в RuStore</a>
+    </div>
+
+    <!-- Карточка 2: Звуки Природы -->
+    <div class="app-card">
+        <div class="app-header">
+            <span class="app-icon">🌿</span>
+            <span class="app-name">Звуки природы</span>
+        </div>
+        <div class="app-desc">Атмосферный аудио-плеер для глубокого сна и релаксации с умным фоновым кэшированием и гибридным стримингом живых PRO-атмосфер.</div>
+        <!-- Ровно один пробел после .ru -->
+        <a href="https://rustore.ru/catalog/app/com.suslov.natureapp" class="store-btn" target="_blank">Открыть в RuStore</a>
+    </div>
+    <!-- Карточка 3: Фонарик PRO -->
+    <div class="app-card">
+        <div class="app-header">
+            <span class="app-icon">🔦</span>
+            <span class="app-name">Фонарик PRO</span>
+        </div>
+        <div class="app-desc">Удобный, мощный и быстрый инструмент со встроенными режимами яркого стробоскопа, SOS-сигналов и полной оптимизацией энергопотребления устройства.</div>
+        <!-- Ровно один пробел после .ru -->
+        <a href="https://rustore.ru/catalog/app/ru.zenforgelabs.flashlight_app" class="store-btn" target="_blank">Открыть в RuStore</a>
+    </div>
+
+    <!-- Карточка 4: Учёт доходов и расходов (Анонс финансового менеджера) -->
+    <div class="app-card" style="position: relative; overflow: hidden;">
+        <div class="app-header">
+            <span class="app-icon">🪙</span>
+            <span class="app-name">Учёт доходов и расходов</span>
+            <span style="font-size: 9px; font-weight: 800; background: var(--accent-color); color: var(--bg-color); padding: 2px 6px; border-radius: 4px; margin-left: auto; text-transform: uppercase;">Скоро</span>
+        </div>
+        <div class="app-desc">Умный финансовый менеджер и ассистент личного бюджета для точного учёта финансовых расходов, контроля сбережений и планирования накоплений.</div>
+        <!-- Ровно один пробел после .ru -->
+        <a href="https://rustore.ru /catalog/developer/62k1bd" class="store-btn disabled" onclick="return false;">Ожидает публикации ⏳</a>
+    </div>
+
+    <div class="section-title" style="text-align: center; margin-top: 18px;">Связь с разработчиками:</div>
+    
+    <div class="email-wrapper">
+        <div class="email-container">
+            <span class="email-address" id="emailStr">apps-help-desk@yandex.ru</span>
+            <button class="icon-btn" onclick="copyEmail()" id="copyBtn" title="Копировать адрес">
+                <svg id="copyIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
-    <!-- Боковая выезжающая шторка меню (Drawer) -->
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-    <div class="side-drawer" id="sideDrawer">
-        <div class="close-drawer" id="closeDrawer">✕</div>
-        <div class="drawer-links">
-            <a href="privacy.html">Политика конфиденциальности</a>
-            <a href="contacts.html">Контакты и поддержка</a>
-            <a href="#">О лаборатории</a>
-            <a href="#">Условия использования</a>
-            <a href="#">Документация</a>
-            <a href="#">Пресс-кит</a>
-            <a href="#">Вакансии</a>
-            <a href="#">Статус систем</a>
-        </div>
-    </div>
+    <div class="footer-text">© 2026 ZenForge Digital Labs. Все права защищены.</div>
+</div>
 
-    <!-- Основной контент (Шторка-карточка) -->
-    <div class="main-card">
+<script>
+    function copyEmail() {
+        var email = document.getElementById("emailStr").innerText;
+        var btn = document.getElementById("copyBtn");
+        var icon = document.getElementById("copyIcon");
         
-        <div class="welcome-badge">Привет! 👋</div>
-        <div class="welcome-sub">Добро пожаловать в цифровую лабораторию ZenForge!</div>
-        
-        <!-- Аккуратный, уменьшенный заголовок -->
-        <h1>Проектируем<br>цифровые решения.</h1>
-
-        <!-- Ровный левый край без дыр и исправленная грамматика -->
-        <p class="description-text">
-            Создаем быстрые, независимые и полностью автономные мобильные приложения для Android. Фокус на локальной безопасности данных и безупречном дизайне без лишнего шума.
-        </p>
-
-        <div class="app-links-section">
-            <!-- Ссылки на продукты. ТУТ ПРОБЕЛ ПЕРЕД СЛОВОМ catalog -->
-            <a href="https://rustore.ru/catalog/app/com.suslov.natureapp" class="app-link-item">
-                🌲 Звуки Природы: уют и покой →
-                <span>Официальный релиз в каталоге RuStore</span>
-            </a>
-
-            <a href="https://rustore.ru/catalog/app/com.suslov.sugar.diary" class="app-link-item">
-                🩸 Дневник Сахара — Контроль Глюкозы →
-                <span>Официальный релиз в каталоге RuStore</span>
-            </a>
-            
-            <a href="#" class="app-link-item" style="color: #475569; pointer-events: none;">
-                📊 Финансовый Менеджер
-                <span>Сборка ядра. Подготовка к публикации</span>
-            </a>
-        </div>
-
-        <footer>
-            <div class="copyright">
-                © 2026 ZenForge Digital Labs. Все права защищены.
-            </div>
-        </footer>
-    </div>
-
-    <!-- Скрипт оживления шторки -->
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const sideDrawer = document.getElementById('sideDrawer');
-        const drawerOverlay = document.getElementById('drawerOverlay');
-        const closeDrawer = document.getElementById('closeDrawer');
-
-        menuToggle.addEventListener('click', () => {
-            sideDrawer.classList.add('open');
-            drawerOverlay.classList.add('open');
+        navigator.clipboard.writeText(email).then(function() {
+            btn.classList.add("success");
+            icon.innerHTML = '<path d="M20 6L9 17l-5-5"></path>';
+            setTimeout(function() {
+                btn.classList.remove("success");
+                icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+            }, 2000);
+        }).catch(function() {
+            var el = document.createElement('textarea');
+            el.value = email; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+            btn.classList.add("success");
+            icon.innerHTML = '<path d="M20 6L9 17l-5-5"></path>';
+            setTimeout(function() {
+                btn.classList.remove("success");
+                icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+            }, 2000);
         });
+    }
+</script>
 
-        function hideMenu() {
-            sideDrawer.classList.remove('open');
-            drawerOverlay.classList.remove('open');
-        }
-
-        closeDrawer.addEventListener('click', hideMenu);
-        drawerOverlay.addEventListener('click', hideMenu);
-    </script>
 </body>
 </html>
