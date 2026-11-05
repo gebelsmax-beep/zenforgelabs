@@ -113,22 +113,29 @@
             text-decoration: underline;
         }
 
-        /* Стиль для аккуратной строки с иконкой "прямоугольник в прямоугольнике" */
+        /* ✨ ЖЕЛЕЗНОЕ ЦЕНТРИРОВАНИЕ КОНТЕЙНЕРА ПО ЦЕНТРУ */
+        .email-wrapper {
+            text-align: center;
+            margin-top: 12px;
+            width: 100%;
+        }
+
         .email-container {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 6px;
+            gap: 10px;
             background: var(--bg-color);
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 10px 16px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
         }
 
+        /* ✨ СИЛЬНЫЙ АКЦЕНТНЫЙ ЦВЕТ ДЛЯ ССЫЛКИ ПОЧТЫ (НЕ БЕЛЫЙ) */
         .email-address {
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--accent-color);
+            word-break: break-all;
         }
 
         .icon-btn {
@@ -156,7 +163,8 @@
 
 <div class="container">
     <h1>Политика конфиденциальности мобильных приложений и сервисов</h1>
-    <div class="date">Дата последнего обновления: 29 сентября 2026 г.</div>
+    <!-- ✨ ОБНОВИЛИ ДАТУ НА СЕГОДНЯШНЮЮ -->
+    <div class="date">Дата последнего обновления: 5 ноября 2026 г.</div>
 
     <h2>1. Общие положения</h2>
     <p>Настоящая Политика конфиденциальности (далее — «Политика») является официальным документом Разработчика — студии ZenForge Digital Labs (далее — «Разработчик») и определяет порядок обработки, хранения и защиты информации, получаемой от пользователей (далее — «Пользователи») в процессе использования всего спектра мобильных приложений, программных продуктов и сопутствующих цифровых сервисов Разработчика, созданных на базе фреймворка Flutter (далее — «Приложения»).</p>
@@ -182,7 +190,7 @@
     <ul>
         <li><strong>Локальная служба напоминаний (Flutter Local Notifications):</strong> Для реализации функции персонального будильника и вывода карточек напоминаний на экран устройства в строго заданное Пользователем время. Приложение использует встроенные локальные планировщики операционной системы Android (включая функцию точных будильников Exact Alarms). Все настройки времени и комментарии обрабатываются и хранятся исключительно на самом устройстве Пользователя без отправки в сеть Интернет.</li>
         <li><strong>RuStore Push SDK:</strong> Доставка push-уведомлений на шторку Android осуществляется с помощью анонимных пуш-токенов, генерируемых платформами магазина. Данные маркеры полностью лишены персональной привязки.</li>
-        <li><strong>Яндекс AppMetrica SDK:</strong> Для автоматического сбора отчетов о сбоях (крашах), анализа стабильности приложения и подсчета общего количества активных пользователей используется сервис AppMetrica. Данный инструмент собирает исключительно обезличенные технические маркеры устройства (модель смартфона, версия операционной системы, регион/город, внутренние логи ошибок) без привязки к конкретному физическому лицу. Разработчик не использует эти данные для таргетинга или рекламы.</li>
+        <li><strong>Яндекс AppMetrica SDK:</strong> Для автоматического сбора отчетов о сбоях (крашах), анализа стабильности приложения и подсчета общего количества активных пользователей используется сервис AppMetrica. Данный инструмент собирает исключительно обезличенные технические маркеры устройства (модель смартфона, версия операционной системы, регион/город, внутренние логи ошибок) без привязки к конкретного физического лицу. Разработчик не использует эти данные для таргетинга или рекламы.</li>
     </ul>
 
     <h2>5. Безопасность детского и семейного контента (0+ / 3+)</h2>
@@ -199,16 +207,17 @@
     <p>Разработчик оставляет за собой право изменять настоящую Политику для приведения её в соответствие с требованиями законодательства и правилами маркетплейсов. По всем вопросам Пользователи могут обращаться через официальные каналы связи студии ZenForge Digital Labs, указанные в профиле Разработчика на платформе магазина приложений.</p>
     <p>Контактный адрес электронной почты для связи и обращений Пользователей:</p>
     
-    <!-- Компактная строка с чистой иконкой двойного прямоугольника -->
-    <div class="email-container">
-        <span class="email-address" id="emailStr">apps-help-desk@yandex.ru</span>
-        <button class="icon-btn" onclick="copyEmail()" id="copyBtn" title="Копировать адрес">
-            <!-- Иконка "Прямоугольник в прямоугольнике" (Copy) через чистый векторный SVG -->
-            <svg id="copyIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-        </button>
+    <!-- Центрированный блок со ссылкой-прямоугольником -->
+    <div class="email-wrapper">
+        <div class="email-container">
+            <span class="email-address" id="emailStr">apps-help-desk@yandex.ru</span>
+            <button class="icon-btn" onclick="copyEmail()" id="copyBtn" title="Копировать адрес">
+                <svg id="copyIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -220,16 +229,13 @@
         
         navigator.clipboard.writeText(email).then(function() {
             btn.classList.add("success");
-            // Меняем иконку прямоугольников на галочку (Check)
             icon.innerHTML = '<path d="M20 6L9 17l-5-5"></path>';
             
             setTimeout(function() {
                 btn.classList.remove("success");
-                // Возвращаем обратно прямоугольники
                 icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
             }, 2000);
         }).catch(function() {
-            // Подстраховка
             var el = document.createElement('textarea');
             el.value = email; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
             btn.classList.add("success");
